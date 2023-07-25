@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # Install script for directory: /Users/junyiyang/CillianProj/Introduction2Algorithm
-=======
-# Install script for directory: /home/robot/Desktop/expirement/Introduction2Algorithm
->>>>>>> fee4628c2d4a8b7b34d039e2d9132558ddb2344a
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -31,14 +27,6 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
 
-<<<<<<< HEAD
-=======
-# Install shared libraries without execute permission?
-if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
-  set(CMAKE_INSTALL_SO_NO_EXE "1")
-endif()
-
->>>>>>> fee4628c2d4a8b7b34d039e2d9132558ddb2344a
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
@@ -46,20 +34,12 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-<<<<<<< HEAD
   set(CMAKE_OBJDUMP "/Library/Developer/CommandLineTools/usr/bin/objdump")
-=======
-  set(CMAKE_OBJDUMP "/usr/bin/objdump")
->>>>>>> fee4628c2d4a8b7b34d039e2d9132558ddb2344a
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-<<<<<<< HEAD
   include("/Users/junyiyang/CillianProj/Introduction2Algorithm/build/code/cmake_install.cmake")
-=======
-  include("/home/robot/Desktop/expirement/Introduction2Algorithm/build/code/cmake_install.cmake")
->>>>>>> fee4628c2d4a8b7b34d039e2d9132558ddb2344a
 
 endif()
 
@@ -71,9 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-<<<<<<< HEAD
 file(WRITE "/Users/junyiyang/CillianProj/Introduction2Algorithm/build/${CMAKE_INSTALL_MANIFEST}"
-=======
-file(WRITE "/home/robot/Desktop/expirement/Introduction2Algorithm/build/${CMAKE_INSTALL_MANIFEST}"
->>>>>>> fee4628c2d4a8b7b34d039e2d9132558ddb2344a
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

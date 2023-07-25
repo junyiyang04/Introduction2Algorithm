@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 /Library/Developer/CommandLineTools/usr/bin/c++  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -dynamiclib -Wl,-headerpad_max_install_names -o libIntrodunction.dylib -install_name @rpath/libIntrodunction.dylib CMakeFiles/Introdunction.dir/src/chapter1.cpp.o CMakeFiles/Introdunction.dir/src/include.cpp.o 
-=======
-/usr/bin/c++ -fPIC -shared -Wl,-soname,libIntrodunction.so -o libIntrodunction.so CMakeFiles/Introdunction.dir/src/chapter1.cpp.o CMakeFiles/Introdunction.dir/src/include.cpp.o 
->>>>>>> fee4628c2d4a8b7b34d039e2d9132558ddb2344a

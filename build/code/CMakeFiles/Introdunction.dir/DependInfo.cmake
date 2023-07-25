@@ -8,21 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-<<<<<<< HEAD
   "/Users/junyiyang/CillianProj/Introduction2Algorithm/code/src/chapter1.cpp" "code/CMakeFiles/Introdunction.dir/src/chapter1.cpp.o" "gcc" "code/CMakeFiles/Introdunction.dir/src/chapter1.cpp.o.d"
   "/Users/junyiyang/CillianProj/Introduction2Algorithm/code/src/include.cpp" "code/CMakeFiles/Introdunction.dir/src/include.cpp.o" "gcc" "code/CMakeFiles/Introdunction.dir/src/include.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
 set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
-=======
-  "/home/robot/Desktop/expirement/Introduction2Algorithm/code/src/chapter1.cpp" "code/CMakeFiles/Introdunction.dir/src/chapter1.cpp.o" "gcc" "code/CMakeFiles/Introdunction.dir/src/chapter1.cpp.o.d"
-  "/home/robot/Desktop/expirement/Introduction2Algorithm/code/src/include.cpp" "code/CMakeFiles/Introdunction.dir/src/include.cpp.o" "gcc" "code/CMakeFiles/Introdunction.dir/src/include.cpp.o.d"
-  )
-
-# Targets to which this target links.
-set(CMAKE_TARGET_LINKED_INFO_FILES
->>>>>>> fee4628c2d4a8b7b34d039e2d9132558ddb2344a
   )
 
 # Fortran module output directory.

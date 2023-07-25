@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/I2A.dir/main.cpp.o -o I2A  -Wl,-rpath,/home/robot/Desktop/expirement/Introduction2Algorithm/build/code code/libIntrodunction.so 

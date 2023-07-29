@@ -416,4 +416,5 @@ CMakeFiles/I2A.dir/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types/_nl_item.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Users/junyiyang/CillianProj/Introduction2Algorithm/./code/include/include.h \
-  /Users/junyiyang/CillianProj/Introduction2Algorithm/code/include/chapter1.h
+  /Users/junyiyang/CillianProj/Introduction2Algorithm/code/include/chapter1.h \
+  /Users/junyiyang/CillianProj/Introduction2Algorithm/code/include/chapter6.h

@@ -45,6 +45,12 @@ void merge(T* A, int p , int q, int r)
 int layer_cnt = 0;
 
 // mergre sort 
+
+/// @brief 
+/// @tparam T 
+/// @param A arrary
+/// @param p start index
+/// @param r end index
 template <typename T>
 void mergeSort(T* A, int p, int r)
 {

@@ -6,6 +6,8 @@
 
 int main()
 {
-    callMergeSort();
+    // callMergeSort();
+    callBuildMaxHeap();
+
     return 0;
 }

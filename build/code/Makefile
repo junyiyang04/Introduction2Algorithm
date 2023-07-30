@@ -178,6 +178,54 @@ src/chapter6.cpp.s:
 	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build && $(MAKE) $(MAKESILENT) -f code/CMakeFiles/Introdunction.dir/build.make code/CMakeFiles/Introdunction.dir/src/chapter6.cpp.s
 .PHONY : src/chapter6.cpp.s
 
+src/chapter7.o: src/chapter7.cpp.o
+.PHONY : src/chapter7.o
+
+# target to build an object file
+src/chapter7.cpp.o:
+	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build && $(MAKE) $(MAKESILENT) -f code/CMakeFiles/Introdunction.dir/build.make code/CMakeFiles/Introdunction.dir/src/chapter7.cpp.o
+.PHONY : src/chapter7.cpp.o
+
+src/chapter7.i: src/chapter7.cpp.i
+.PHONY : src/chapter7.i
+
+# target to preprocess a source file
+src/chapter7.cpp.i:
+	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build && $(MAKE) $(MAKESILENT) -f code/CMakeFiles/Introdunction.dir/build.make code/CMakeFiles/Introdunction.dir/src/chapter7.cpp.i
+.PHONY : src/chapter7.cpp.i
+
+src/chapter7.s: src/chapter7.cpp.s
+.PHONY : src/chapter7.s
+
+# target to generate assembly for a file
+src/chapter7.cpp.s:
+	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build && $(MAKE) $(MAKESILENT) -f code/CMakeFiles/Introdunction.dir/build.make code/CMakeFiles/Introdunction.dir/src/chapter7.cpp.s
+.PHONY : src/chapter7.cpp.s
+
+src/common.o: src/common.cpp.o
+.PHONY : src/common.o
+
+# target to build an object file
+src/common.cpp.o:
+	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build && $(MAKE) $(MAKESILENT) -f code/CMakeFiles/Introdunction.dir/build.make code/CMakeFiles/Introdunction.dir/src/common.cpp.o
+.PHONY : src/common.cpp.o
+
+src/common.i: src/common.cpp.i
+.PHONY : src/common.i
+
+# target to preprocess a source file
+src/common.cpp.i:
+	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build && $(MAKE) $(MAKESILENT) -f code/CMakeFiles/Introdunction.dir/build.make code/CMakeFiles/Introdunction.dir/src/common.cpp.i
+.PHONY : src/common.cpp.i
+
+src/common.s: src/common.cpp.s
+.PHONY : src/common.s
+
+# target to generate assembly for a file
+src/common.cpp.s:
+	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build && $(MAKE) $(MAKESILENT) -f code/CMakeFiles/Introdunction.dir/build.make code/CMakeFiles/Introdunction.dir/src/common.cpp.s
+.PHONY : src/common.cpp.s
+
 src/include.o: src/include.cpp.o
 .PHONY : src/include.o
 
@@ -217,6 +265,12 @@ help:
 	@echo "... src/chapter6.o"
 	@echo "... src/chapter6.i"
 	@echo "... src/chapter6.s"
+	@echo "... src/chapter7.o"
+	@echo "... src/chapter7.i"
+	@echo "... src/chapter7.s"
+	@echo "... src/common.o"
+	@echo "... src/common.i"
+	@echo "... src/common.s"
 	@echo "... src/include.o"
 	@echo "... src/include.i"
 	@echo "... src/include.s"

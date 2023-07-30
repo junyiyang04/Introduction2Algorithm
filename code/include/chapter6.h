@@ -1,4 +1,20 @@
+#ifndef _CHAPTER_6_
+#define _CHAPTER_6_
+
 #include <iostream>
+#include <concepts>
+#include <type_traits>
+
+template <typename T3>
+concept integral = std::is_integral_v<T3>;
+
+template <typename T1, typename T2>
+
+struct Heap
+{
+    T1* heap;
+    T2 size;
+};
 
 
 /// @brief just make sure the current 'idx' element and its left and right children maintains the max-heap property
@@ -23,4 +39,40 @@ void buildMaxHeap(T* A, int heap_size);
 template <typename T>
 void heapSort(T* A, int array_size);
 
+
+// ******************************************************************
+// *                                                                *
+// *                     PRIORITY QUEUE                             *
+// *            ToDo: data should be stored in linker list          *
+// *                                                                *
+// ******************************************************************
+
+/// @brief return max heap value
+/// @tparam T 
+/// @param A
+/// @return 
+template <typename T>
+inline T heapMaximum(T* A);
+
+/// @brief extract the max value  from max heap and the size of the heap becomes 'size - 1'
+/// @tparam T 
+/// @param A 
+/// @param size 
+/// @return 
+template <typename T> 
+T heapExtractMax(T* A, int* size);
+
+/// @brief increase the specific element value to 'key'
+/// @tparam T 
+/// @param A 
+/// @param idx 
+/// @param key I- the key should be big than its original value, if not the heap would not been changed
+///             (smaller value could break the property of max heap)
+/// @param size 
+template <typename T >
+void heapIncreaseKey(T* A, int idx, T key, int size);
+
 void callBuildMaxHeap();
+void callPriorityQueue();
+
+#endif

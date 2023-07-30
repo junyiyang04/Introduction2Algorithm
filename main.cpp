@@ -6,8 +6,14 @@
 
 int main()
 {
+    // // chapter2
     // callMergeSort();
-    callBuildMaxHeap();
 
+    // // chapter6
+    // callBuildMaxHeap();
+    // callPriorityQueue();
+    
+    // chapter7
+    callQuickSort();
     return 0;
 }

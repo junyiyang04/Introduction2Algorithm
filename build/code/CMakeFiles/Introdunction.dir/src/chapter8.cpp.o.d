@@ -1,5 +1,6 @@
-CMakeFiles/I2A.dir/main.cpp.o: \
-  /Users/junyiyang/CillianProj/Introduction2Algorithm/main.cpp \
+code/CMakeFiles/Introdunction.dir/src/chapter8.cpp.o: \
+  /Users/junyiyang/CillianProj/Introduction2Algorithm/code/src/chapter8.cpp \
+  /Users/junyiyang/CillianProj/Introduction2Algorithm/code/include/chapter8.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__config_site \
@@ -414,9 +415,4 @@ CMakeFiles/I2A.dir/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/sys/_types/_fsfilcnt_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/_types/_nl_item.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
-  /Users/junyiyang/CillianProj/Introduction2Algorithm/./code/include/include.h \
-  /Users/junyiyang/CillianProj/Introduction2Algorithm/code/include/chapter1.h \
-  /Users/junyiyang/CillianProj/Introduction2Algorithm/code/include/chapter6.h \
-  /Users/junyiyang/CillianProj/Introduction2Algorithm/code/include/chapter7.h \
-  /Users/junyiyang/CillianProj/Introduction2Algorithm/code/include/chapter8.h \
   /Users/junyiyang/CillianProj/Introduction2Algorithm/code/include/common.h

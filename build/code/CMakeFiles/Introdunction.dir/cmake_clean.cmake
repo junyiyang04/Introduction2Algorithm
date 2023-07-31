@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Introdunction.dir/src/chapter6.cpp.o.d"
   "CMakeFiles/Introdunction.dir/src/chapter7.cpp.o"
   "CMakeFiles/Introdunction.dir/src/chapter7.cpp.o.d"
+  "CMakeFiles/Introdunction.dir/src/chapter8.cpp.o"
+  "CMakeFiles/Introdunction.dir/src/chapter8.cpp.o.d"
   "CMakeFiles/Introdunction.dir/src/common.cpp.o"
   "CMakeFiles/Introdunction.dir/src/common.cpp.o.d"
   "CMakeFiles/Introdunction.dir/src/include.cpp.o"

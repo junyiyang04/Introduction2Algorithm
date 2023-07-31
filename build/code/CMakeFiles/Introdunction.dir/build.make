@@ -111,10 +111,24 @@ code/CMakeFiles/Introdunction.dir/src/chapter7.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Introdunction.dir/src/chapter7.cpp.s"
 	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build/code && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/junyiyang/CillianProj/Introduction2Algorithm/code/src/chapter7.cpp -o CMakeFiles/Introdunction.dir/src/chapter7.cpp.s
 
+code/CMakeFiles/Introdunction.dir/src/chapter8.cpp.o: code/CMakeFiles/Introdunction.dir/flags.make
+code/CMakeFiles/Introdunction.dir/src/chapter8.cpp.o: /Users/junyiyang/CillianProj/Introduction2Algorithm/code/src/chapter8.cpp
+code/CMakeFiles/Introdunction.dir/src/chapter8.cpp.o: code/CMakeFiles/Introdunction.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/junyiyang/CillianProj/Introduction2Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object code/CMakeFiles/Introdunction.dir/src/chapter8.cpp.o"
+	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build/code && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT code/CMakeFiles/Introdunction.dir/src/chapter8.cpp.o -MF CMakeFiles/Introdunction.dir/src/chapter8.cpp.o.d -o CMakeFiles/Introdunction.dir/src/chapter8.cpp.o -c /Users/junyiyang/CillianProj/Introduction2Algorithm/code/src/chapter8.cpp
+
+code/CMakeFiles/Introdunction.dir/src/chapter8.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Introdunction.dir/src/chapter8.cpp.i"
+	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build/code && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/junyiyang/CillianProj/Introduction2Algorithm/code/src/chapter8.cpp > CMakeFiles/Introdunction.dir/src/chapter8.cpp.i
+
+code/CMakeFiles/Introdunction.dir/src/chapter8.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Introdunction.dir/src/chapter8.cpp.s"
+	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build/code && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/junyiyang/CillianProj/Introduction2Algorithm/code/src/chapter8.cpp -o CMakeFiles/Introdunction.dir/src/chapter8.cpp.s
+
 code/CMakeFiles/Introdunction.dir/src/common.cpp.o: code/CMakeFiles/Introdunction.dir/flags.make
 code/CMakeFiles/Introdunction.dir/src/common.cpp.o: /Users/junyiyang/CillianProj/Introduction2Algorithm/code/src/common.cpp
 code/CMakeFiles/Introdunction.dir/src/common.cpp.o: code/CMakeFiles/Introdunction.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/junyiyang/CillianProj/Introduction2Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object code/CMakeFiles/Introdunction.dir/src/common.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/junyiyang/CillianProj/Introduction2Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object code/CMakeFiles/Introdunction.dir/src/common.cpp.o"
 	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build/code && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT code/CMakeFiles/Introdunction.dir/src/common.cpp.o -MF CMakeFiles/Introdunction.dir/src/common.cpp.o.d -o CMakeFiles/Introdunction.dir/src/common.cpp.o -c /Users/junyiyang/CillianProj/Introduction2Algorithm/code/src/common.cpp
 
 code/CMakeFiles/Introdunction.dir/src/common.cpp.i: cmake_force
@@ -128,7 +142,7 @@ code/CMakeFiles/Introdunction.dir/src/common.cpp.s: cmake_force
 code/CMakeFiles/Introdunction.dir/src/include.cpp.o: code/CMakeFiles/Introdunction.dir/flags.make
 code/CMakeFiles/Introdunction.dir/src/include.cpp.o: /Users/junyiyang/CillianProj/Introduction2Algorithm/code/src/include.cpp
 code/CMakeFiles/Introdunction.dir/src/include.cpp.o: code/CMakeFiles/Introdunction.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/junyiyang/CillianProj/Introduction2Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object code/CMakeFiles/Introdunction.dir/src/include.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/junyiyang/CillianProj/Introduction2Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object code/CMakeFiles/Introdunction.dir/src/include.cpp.o"
 	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build/code && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT code/CMakeFiles/Introdunction.dir/src/include.cpp.o -MF CMakeFiles/Introdunction.dir/src/include.cpp.o.d -o CMakeFiles/Introdunction.dir/src/include.cpp.o -c /Users/junyiyang/CillianProj/Introduction2Algorithm/code/src/include.cpp
 
 code/CMakeFiles/Introdunction.dir/src/include.cpp.i: cmake_force
@@ -144,6 +158,7 @@ Introdunction_OBJECTS = \
 "CMakeFiles/Introdunction.dir/src/chapter1.cpp.o" \
 "CMakeFiles/Introdunction.dir/src/chapter6.cpp.o" \
 "CMakeFiles/Introdunction.dir/src/chapter7.cpp.o" \
+"CMakeFiles/Introdunction.dir/src/chapter8.cpp.o" \
 "CMakeFiles/Introdunction.dir/src/common.cpp.o" \
 "CMakeFiles/Introdunction.dir/src/include.cpp.o"
 
@@ -153,11 +168,12 @@ Introdunction_EXTERNAL_OBJECTS =
 code/libIntrodunction.dylib: code/CMakeFiles/Introdunction.dir/src/chapter1.cpp.o
 code/libIntrodunction.dylib: code/CMakeFiles/Introdunction.dir/src/chapter6.cpp.o
 code/libIntrodunction.dylib: code/CMakeFiles/Introdunction.dir/src/chapter7.cpp.o
+code/libIntrodunction.dylib: code/CMakeFiles/Introdunction.dir/src/chapter8.cpp.o
 code/libIntrodunction.dylib: code/CMakeFiles/Introdunction.dir/src/common.cpp.o
 code/libIntrodunction.dylib: code/CMakeFiles/Introdunction.dir/src/include.cpp.o
 code/libIntrodunction.dylib: code/CMakeFiles/Introdunction.dir/build.make
 code/libIntrodunction.dylib: code/CMakeFiles/Introdunction.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/junyiyang/CillianProj/Introduction2Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX shared library libIntrodunction.dylib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/junyiyang/CillianProj/Introduction2Algorithm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX shared library libIntrodunction.dylib"
 	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build/code && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Introdunction.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

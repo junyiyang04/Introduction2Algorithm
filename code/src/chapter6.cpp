@@ -1,5 +1,5 @@
 #include "chapter6.h"
-#include "common.cpp"
+#include "common.h"
 
 inline int parent(int i)
 {

@@ -202,6 +202,30 @@ src/chapter7.cpp.s:
 	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build && $(MAKE) $(MAKESILENT) -f code/CMakeFiles/Introdunction.dir/build.make code/CMakeFiles/Introdunction.dir/src/chapter7.cpp.s
 .PHONY : src/chapter7.cpp.s
 
+src/chapter8.o: src/chapter8.cpp.o
+.PHONY : src/chapter8.o
+
+# target to build an object file
+src/chapter8.cpp.o:
+	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build && $(MAKE) $(MAKESILENT) -f code/CMakeFiles/Introdunction.dir/build.make code/CMakeFiles/Introdunction.dir/src/chapter8.cpp.o
+.PHONY : src/chapter8.cpp.o
+
+src/chapter8.i: src/chapter8.cpp.i
+.PHONY : src/chapter8.i
+
+# target to preprocess a source file
+src/chapter8.cpp.i:
+	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build && $(MAKE) $(MAKESILENT) -f code/CMakeFiles/Introdunction.dir/build.make code/CMakeFiles/Introdunction.dir/src/chapter8.cpp.i
+.PHONY : src/chapter8.cpp.i
+
+src/chapter8.s: src/chapter8.cpp.s
+.PHONY : src/chapter8.s
+
+# target to generate assembly for a file
+src/chapter8.cpp.s:
+	cd /Users/junyiyang/CillianProj/Introduction2Algorithm/build && $(MAKE) $(MAKESILENT) -f code/CMakeFiles/Introdunction.dir/build.make code/CMakeFiles/Introdunction.dir/src/chapter8.cpp.s
+.PHONY : src/chapter8.cpp.s
+
 src/common.o: src/common.cpp.o
 .PHONY : src/common.o
 
@@ -268,6 +292,9 @@ help:
 	@echo "... src/chapter7.o"
 	@echo "... src/chapter7.i"
 	@echo "... src/chapter7.s"
+	@echo "... src/chapter8.o"
+	@echo "... src/chapter8.i"
+	@echo "... src/chapter8.s"
 	@echo "... src/common.o"
 	@echo "... src/common.i"
 	@echo "... src/common.s"

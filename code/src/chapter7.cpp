@@ -1,5 +1,5 @@
 #include "chapter7.h"
-#include "common.cpp"
+#include "common.h"
 
 // ******************************************************************
 // *                                                                *

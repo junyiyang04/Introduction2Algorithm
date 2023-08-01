@@ -16,3 +16,21 @@ void abortMesage(std::string msg)
                 << "    aborting ..." << std::endl;
     abort();
 }
+
+
+// template <class T>
+// Node<T>* LNode<T>::head()
+// {
+//     return *this->phead;
+// }
+// template <class T>
+// LNode<T>::LNode()
+// {
+//     // *phead = new Node<T>;
+//     *phead = new node;
+//     (*phead)->next = NULL;
+// }
+template <class T>
+LNode<T>::~LNode()
+{
+}

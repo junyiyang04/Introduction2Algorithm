@@ -2,11 +2,11 @@
 #define _CHAPTER_6_
 
 #include <iostream>
-#include <concepts>
-#include <type_traits>
+// #include <concepts>
+// #include <type_traits>
 
-template <typename T3>
-concept integral = std::is_integral_v<T3>;
+// template <typename T3>
+// concept integral = std::is_integral_v<T3>;
 
 template <typename T1, typename T2>
 

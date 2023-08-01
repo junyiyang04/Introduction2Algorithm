@@ -1,6 +1,6 @@
-/Users/junyiyang/CillianProj/Introduction2Algorithm/build/CMakeFiles/I2A.dir
-/Users/junyiyang/CillianProj/Introduction2Algorithm/build/CMakeFiles/edit_cache.dir
-/Users/junyiyang/CillianProj/Introduction2Algorithm/build/CMakeFiles/rebuild_cache.dir
-/Users/junyiyang/CillianProj/Introduction2Algorithm/build/code/CMakeFiles/Introdunction.dir
-/Users/junyiyang/CillianProj/Introduction2Algorithm/build/code/CMakeFiles/edit_cache.dir
-/Users/junyiyang/CillianProj/Introduction2Algorithm/build/code/CMakeFiles/rebuild_cache.dir
+/home/robot/Desktop/expirement/Introduction2Algorithm/build/CMakeFiles/I2A.dir
+/home/robot/Desktop/expirement/Introduction2Algorithm/build/CMakeFiles/edit_cache.dir
+/home/robot/Desktop/expirement/Introduction2Algorithm/build/CMakeFiles/rebuild_cache.dir
+/home/robot/Desktop/expirement/Introduction2Algorithm/build/code/CMakeFiles/Introdunction.dir
+/home/robot/Desktop/expirement/Introduction2Algorithm/build/code/CMakeFiles/edit_cache.dir
+/home/robot/Desktop/expirement/Introduction2Algorithm/build/code/CMakeFiles/rebuild_cache.dir

@@ -11,8 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Introdunction.dir/src/common.cpp.o.d"
   "CMakeFiles/Introdunction.dir/src/include.cpp.o"
   "CMakeFiles/Introdunction.dir/src/include.cpp.o.d"
-  "libIntrodunction.dylib"
   "libIntrodunction.pdb"
+  "libIntrodunction.so"
 )
 
 # Per-language clean rules from dependency scanning.

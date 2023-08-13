@@ -32,36 +32,36 @@ inline void swap(T* a, T* b)
 void abortMesage(std::string msg);
 
 
-template <typename T>
-class Node
-{
-public:
-    T data;
-    Node *next;
-// private:
-    Node(){}
-    ~Node(){}
-};    
+// template <typename T>
+// class Node
+// {
+// public:
+//     T data;
+//     Node *next;
+// // private:
+//     Node(){}
+//     ~Node(){}
+// };    
 
-struct node
-{
-    int data;
-    node *next;
-};
-template <class T>
-class LNode
-{
-private:
-    /* data */
-    // Node<T>** phead;
-    node** phead;
-public:
-    // Node<T>* head();
-    // node* head();
-    // void push_back(T);
-    LNode(/* args */){}
-    ~LNode();
-};
+// struct node
+// {
+//     int data;
+//     node *next;
+// };
+// template <class T>
+// class LNode
+// {
+// private:
+//     /* data */
+//     // Node<T>** phead;
+//     node** phead;
+// public:
+//     // Node<T>* head();
+//     // node* head();
+//     // void push_back(T);
+//     LNode(/* args */){}
+//     ~LNode();
+// };
 
 
 

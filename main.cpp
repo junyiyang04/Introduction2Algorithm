@@ -16,10 +16,12 @@ int main()
     // // chapter7
     // callQuickSort();
 
-    // chapter8
-    callCountingSort();
+    // // chapter8
+    // callCountingSort();
 
     // chapter10
+    callLNode();
+    callDLNode();
 
     return 0;
 }

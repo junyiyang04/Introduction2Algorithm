@@ -1,7 +1,14 @@
 #include <iostream>
 #include "./code/include/include.h"
 
-
+int hash(const std::string &key) {
+    int sum = 0;
+    for (char c : key) {
+        sum += c;
+        std::cout << " the value of sum: " << sum << std::endl;
+    }
+    return sum % 10;
+}
 
 
 int main()
@@ -23,5 +30,10 @@ int main()
     callLNode();
     callDLNode();
 
+    int total = 10;
+    std::string name = "Cillian";
+    hash(name);
+
+    callEuclid();
     return 0;
 }

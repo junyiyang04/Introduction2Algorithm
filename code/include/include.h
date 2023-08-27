@@ -3,3 +3,5 @@
 #include "chapter7.h"
 #include "chapter8.h"
 #include "chapter10.h"
+#include "chapter11.h"
+#include "chapter31.h"

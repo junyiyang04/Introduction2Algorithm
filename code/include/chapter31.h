@@ -31,4 +31,7 @@ GCD_Coeffi ExtendEUCLID(int n1, int n2);
 
 void callEuclid();
 
+
+void callModularLinearEquationSolver();
+
 #endif

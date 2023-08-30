@@ -35,5 +35,6 @@ int main()
     hash(name);
 
     callEuclid();
+    callModularLinearEquationSolver();
     return 0;
 }

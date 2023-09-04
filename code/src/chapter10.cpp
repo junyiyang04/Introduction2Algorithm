@@ -115,6 +115,17 @@ void deleteLNode(LNode* head)
     head = NULL;
 }
 
+void showLinkList(LNode* head)
+{
+    int cnt = 1;
+    LNode* p = head->next;
+    while(p != NULL)
+    {
+        printf("No.%d element is %d\n", ++cnt, p->data);
+        p = p->next;
+    }
+}
+
 void callLNode()
 {
     printf(">> Calling the link list \n");

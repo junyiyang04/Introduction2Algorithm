@@ -29,4 +29,7 @@ else
     echo "> Error: short of parameter"
     echo "  Usage: ./push.sh <Description>"
     echo "  \"Description\" could be the brief of this push or any thing you want"
+    if [ ! -d $folder ]; then 
+        echo "> Error: push from the folder containing '.git'"
+    fi
 fi

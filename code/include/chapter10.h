@@ -44,6 +44,7 @@ void deleteLNode(LNode* head);
 
 void callLNode();
 
+void showLinkList(LNode* head);
 // ******************************************************************
 // *                                                                *
 // *                    double linked list                          *

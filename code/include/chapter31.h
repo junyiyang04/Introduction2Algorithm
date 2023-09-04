@@ -9,7 +9,11 @@
 // *                                                                *
 // ******************************************************************
 
-// the greatest common divisor with corresponding coefficients
+/**
+ * the greatest common divisor with corresponding coefficients
+ * gcd = n1 * c1 + n2 * c2
+ * if gcd==1, c1 is also the inverse of n1
+*/
 typedef struct _GCD_Coeffi_
 {
     int gcd;
@@ -34,4 +38,9 @@ void callEuclid();
 
 void callModularLinearEquationSolver();
 
+
+
+
+
+void callModularExponentiation();
 #endif

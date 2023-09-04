@@ -36,5 +36,6 @@ int main()
 
     callEuclid();
     callModularLinearEquationSolver();
+    callModularExponentiation();
     return 0;
 }

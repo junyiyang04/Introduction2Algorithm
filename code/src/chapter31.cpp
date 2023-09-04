@@ -1,5 +1,6 @@
 #include "chapter31.h"
-
+#include "chapter10.h" // invoke link-list
+#include "math.h"
 // ******************************************************************
 // *                                                                *
 // *                      EUCLID ALGORITHM                          *
@@ -63,6 +64,8 @@ void callEuclid()
 // *                                                                *
 // *                    modular arithmetic                          *
 // *                - using GCD recursion theorem                   *
+// *                - 中国余数定理                                    *
+// *                - power wiht repeated squaring                  *
 // *                                                                *
 // ******************************************************************
 
@@ -74,6 +77,33 @@ inline int mod(int a, int n)
 {
     int m = a % n;
     return m < 0 ? m + n : m;
+}
+
+/// @brief computing a^b(mod n)
+/// @param a 
+/// @param b 
+/// @param n 
+/// @return 
+int ModularExponentiation(int a, int b, int n)
+{
+    int d = 1;
+    LNode *head;
+    CreateLinkList(&head);
+    while(b){
+        insertLinkList(head, 0, b % 2);
+        b = b >> 1;
+    }
+    //showLinkList(head);
+    LNode *p = head->next;
+    for (; p != NULL; p = p->next)
+    {
+        d = (int)pow(d, (int)2) % n; 
+        if(1 == p->data){
+            d = (d * a) % n;
+        }
+    }
+    deleteLNode(head);
+    return d;
 }
 
 /// @brief solve the modular linear equation that ax ≡ b(mod n)
@@ -96,6 +126,8 @@ void modularLinearEquationSolver(int a, int b, int n)
     }
 }
 
+
+
 void callModularLinearEquationSolver()
 {
     int a = 3;
@@ -107,4 +139,14 @@ void callModularLinearEquationSolver()
     printf("\tand  %d = %d * %d + %d * %d\n",
             gcd.gcd, a, gcd.c1, n, gcd.c2);
     modularLinearEquationSolver(a, b, n);
+}
+
+void callModularExponentiation()
+{
+    int a = 7;
+    int b = 560;
+    int n = 561;
+    int m_e = ModularExponentiation(a, b, n);
+    printf("cp31: the modular exponentiation of %d ^ %d (mod %d) is %d\n",
+            a, b, n, m_e);
 }

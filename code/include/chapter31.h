@@ -40,7 +40,12 @@ void callModularLinearEquationSolver();
 
 
 
-
+/// @brief computing a^b(mod n)
+/// @param a 
+/// @param b 
+/// @param n 
+/// @return 
+int ModularExponentiation(int a, int b, int n);
 
 void callModularExponentiation();
 #endif

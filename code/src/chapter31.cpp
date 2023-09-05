@@ -93,10 +93,8 @@ int ModularExponentiation(int a, int b, int n)
         insertLinkList(head, 0, b % 2);
         b = b >> 1;
     }
-    //showLinkList(head);
     LNode *p = head->next;
-    for (; p != NULL; p = p->next)
-    {
+    for (; p != NULL; p = p->next){
         d = (int)pow(d, (int)2) % n; 
         if(1 == p->data){
             d = (d * a) % n;
@@ -149,4 +147,25 @@ void callModularExponentiation()
     int m_e = ModularExponentiation(a, b, n);
     printf("cp31: the modular exponentiation of %d ^ %d (mod %d) is %d\n",
             a, b, n, m_e);
+}
+
+
+// ******************************************************************
+// *                                                                *
+// *                    Primality testing                           *
+// *                - 伪素数测试法PseudoPrime                         *
+// *                - 随机素数测试Miller-Rabin                        *
+// *                -                   *
+// *                                                                *
+// ******************************************************************
+
+/// @brief checking the primality of n
+/// @param n 
+/// @return if primality return true
+bool PseudoPrime(int n)
+{
+    if(ModularExponentiation(2, n - 1, n) != 1)
+        return false; // composite
+    else
+        return true;  // prime
 }

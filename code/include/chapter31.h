@@ -48,4 +48,20 @@ void callModularLinearEquationSolver();
 int ModularExponentiation(int a, int b, int n);
 
 void callModularExponentiation();
+
+
+// ******************************************************************
+// *                                                                *
+// *                    Primality testing                           *
+// *                - 伪素数测试法PseudoPrime                         *
+// *                - 随机素数测试Miller-Rabin                        *
+// *                -                   *
+// *                                                                *
+// ******************************************************************
+
+/// @brief checking the primality of n
+/// @param n 
+/// @return if primality return true
+bool PseudoPrime(int n);
+
 #endif

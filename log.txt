@@ -4,3 +4,7 @@
 2023-09-05 00:42:53 -> log: ModularExponentiation
 2023-09-05 00:43:34 -> log: ModularExponentiation
 2023-09-05 23:57:32 -> log: pseudo prime
+2023-09-13 23:48:13 -> log: cross platform
+2023-09-13 23:52:03 -> log: cross platform
+2023-09-13 23:53:26 -> log: cross platform
+2023-09-13 23:54:05 -> log: cross platform

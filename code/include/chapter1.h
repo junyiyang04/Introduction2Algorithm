@@ -1,11 +1,11 @@
 #include <iostream>
-
+#include "export_macro.h"
 // merge
 template <typename T>
-void merge(T* A, int p , int q, int r);
+I2A_API void merge(T* A, int p , int q, int r);
 
 // mergre sort 
 template <typename T>
-void mergeSort(T* A, int p, int r);
+I2A_API void mergeSort(T* A, int p, int r);
 
-void callMergeSort();
+I2A_API void callMergeSort();

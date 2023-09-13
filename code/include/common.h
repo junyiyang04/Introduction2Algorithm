@@ -1,6 +1,7 @@
 #ifndef _COMMON_H_
 #define _COMMON_H_
 #include <iostream>
+#include "export_macro.h"
 #include <vector>
 
 template <typename T1, typename T2>
@@ -11,7 +12,7 @@ struct Array
 };
 
 template<typename T>
-void coutArray(Array<T, int> input, std::string msg)
+I2A_API void coutArray(Array<T, int> input, std::string msg)
 {
     std::cout << "\n>>> " << msg << ":" << std::endl;
     for(int i = 0; i < input.size; i++)
@@ -22,14 +23,14 @@ void coutArray(Array<T, int> input, std::string msg)
 }
 
 template<typename T>
-inline void swap(T* a, T* b)
+I2A_API inline void swap(T* a, T* b)
 {
     T tmp = *a;
     *a = *b;
     *b = tmp;
 }
 
-void abortMesage(std::string msg);
+I2A_API void abortMesage(std::string msg);
 
 
 // template <typename T>

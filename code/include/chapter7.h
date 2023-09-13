@@ -1,4 +1,5 @@
 #include <iostream>
+#include "export_macro.h"
 
 // ******************************************************************
 // *                                                                *
@@ -12,7 +13,7 @@
 /// @param start I- start element index
 /// @param end I- end element index
 template <typename T>
-void quickSort(T* A, int start, int end);
+I2A_API void quickSort(T* A, int start, int end);
 
 /// @brief partition the array(make elements whoes index smaller 
 ///        than middle are smaller than the value of middle element)
@@ -22,6 +23,6 @@ void quickSort(T* A, int start, int end);
 /// @param end 
 /// @return 
 template <typename T>
-int partition(T* A, int start, int end);
+I2A_API int partition(T* A, int start, int end);
 
-void callQuickSort();
+I2A_API void callQuickSort();

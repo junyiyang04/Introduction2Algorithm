@@ -1,4 +1,5 @@
 #include <iostream>
+#include "export_macro.h"
 #include "chapter10.h"
 enum HashFunc
 {

@@ -1,6 +1,8 @@
 #ifndef _CHAPTER_31_
 #define _CHAPTER_31_
 #include <iostream>
+#include "export_macro.h"
+
 
 // ******************************************************************
 // *                                                                *
@@ -25,18 +27,18 @@ typedef struct _GCD_Coeffi_
 /// @param n1 I- first integer
 /// @param n2 I- second integer
 /// @return the greatest common divisor
-int EUCLID(int n1, int n2);
+I2A_API int EUCLID(int n1, int n2);
 
 /// @brief the extended form of Eucilid's algorihtm
 /// @param n1 -I first nonnegative integer
 /// @param n2 -I second nonneagative integer
 /// @return gcd and coefficients
-GCD_Coeffi ExtendEUCLID(int n1, int n2);
+I2A_API GCD_Coeffi ExtendEUCLID(int n1, int n2);
 
-void callEuclid();
+I2A_API void callEuclid();
 
 
-void callModularLinearEquationSolver();
+I2A_API void callModularLinearEquationSolver();
 
 
 
@@ -45,9 +47,9 @@ void callModularLinearEquationSolver();
 /// @param b 
 /// @param n 
 /// @return 
-int ModularExponentiation(int a, int b, int n);
+I2A_API int ModularExponentiation(int a, int b, int n);
 
-void callModularExponentiation();
+I2A_API void callModularExponentiation();
 
 
 // ******************************************************************
@@ -62,6 +64,6 @@ void callModularExponentiation();
 /// @brief checking the primality of n
 /// @param n 
 /// @return if primality return true
-bool PseudoPrime(int n);
+I2A_API bool PseudoPrime(int n);
 
 #endif

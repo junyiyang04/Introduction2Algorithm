@@ -5,11 +5,21 @@
 folder=".git"
 Log="log.txt"
 alter_folder="build"
-#if [ -d $alter_folder ]; then
- #   cd ..
-#if
+binary_folder="out"
+
 
 if [ $# -ge 1 ]; then
+    if [ -d $alter_folder ]; then
+        rm -rf ${alter_folder}
+        echo "> removing ${alter_folder}"
+    fi
+
+    if [ -d $binary_folder ]; then
+        rm -rf ${binary_folder}
+        rm -rf .vs
+        echo "> removing ${binary_folder}"
+    fi
+
     if [ -d $folder ]; then 
         echo "> find repository"
         time3=$(date "+%Y-%m-%d %H:%M:%S")

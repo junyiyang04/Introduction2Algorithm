@@ -4,7 +4,7 @@
 typedef struct _BTree_Node_
 {
     int data;
-    struct _BTree_Node_ *lchild, *rchild;
+    struct _BTree_Node_ *lchild, *rchild, *parent;
 }BTree_Node;
 
 

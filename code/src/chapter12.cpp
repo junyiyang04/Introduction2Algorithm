@@ -67,9 +67,6 @@ void Postorder(BTree_Node* p)
  *             __|
  *            |      
  *            9
- * preorder : f d b a c e g i h j
- * inorder  : a b c d e f g h i j
- * postorder: a c b e d h j i g f
 */
 BTree_Node* treeSearch(BTree_Node* p, int key)
 {
@@ -114,8 +111,42 @@ BTree_Node* treeSuccessor(BTree_Node* p)
 {
     if(p->rchild != NULL) //这样直接使用会不会出问题
         return treeMinimum(p->rchild);
-    BTree_Node* tmp = p->parent;
-    while(tmp != NULL && x)
+    BTree_Node* p_cp = p;
+    while(p_cp->parent != NULL && p_cp == p_cp->parent->rchild)
+    {
+        p_cp = p_cp->parent;
+    }
+    return p_cp->parent;
 }
 
+BTree_Node* treePredecessor(BTree_Node* p)
+{
+    if(p->lchild != NULL) //这样直接使用会不会出问题
+        return p->rchild;
+    BTree_Node* p_cp = p;
+    while(p_cp->parent != NULL && p_cp == p_cp->parent->lchild)
+    {
+        p_cp = p_cp->parent;
+    }
+    return p_cp->parent;
+}
 
+void treeInsert(BTree_Node* root, BTree_Node* p)
+{
+    BTree_Node* y = NULL;
+    BTree_Node* x = root;
+    while(x != NULL){
+        y = x;
+        if(x->data < p->data)
+            x = x->rchild;
+        else
+            x = x->lchild;
+    }
+    p->parent = y;
+    if(y == NULL)
+        root = p;
+    else if(p->data < y->data)
+        y->lchild = p;
+    else
+        y->rchild = p;
+}

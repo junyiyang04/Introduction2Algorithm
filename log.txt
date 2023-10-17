@@ -11,3 +11,4 @@
 2023-09-17 18:03:40 -> log: refined the push.sh
 2023-10-11 00:32:16 -> log: bstree
 2023-10-14 00:07:06 -> log: bstree
+2023-10-17 09:18:48 -> log: bst insert

@@ -150,3 +150,46 @@ void treeInsert(BTree_Node* root, BTree_Node* p)
     else
         y->rchild = p;
 }
+
+/// @brief move subtrees around within the binary search tree(to my understanding, replacing u's place in the tree with v)
+/// @param root the root on behalf of the binary search tree
+/// @param u the position where want to move the subtree
+/// @param v subtree root
+/// @note this operation don't change the location of u v
+void transPlant(BTree_Node* root,const BTree_Node* u,BTree_Node* v)
+{
+    if(u->parent == NULL)
+        root = v;
+    else if(u == u->parent->lchild)
+        u->parent->lchild = v;
+    else
+        u->parent->rchild = v;
+    if(v != NULL)
+        v->parent = u->parent; // 不用首先判断v->parent是否为空吗
+}
+
+
+
+/// @brief delete the node p
+/// @param root the root of the tree 
+/// @param p the node waiting to be deleted
+void treeDelete(BTree_Node* root, BTree_Node* p)
+{
+    if(p->lchild == NULL) // case 1,2: the node p has only one child
+        transPlant(root, p, p->lchild);
+    else if(p->rchild == NULL)
+        transPlant(root, p, p->rchild);
+    else{
+        BTree_Node* y = treeMinimum(p->rchild);
+        if(y->parent != p){ // case 3: the node p has two child but and it's succesor is next to itself 
+            transPlant(root, y, y->rchild); // 这个操作将y节点空闲出来并且链接y->r到原来y的位置
+            y->rchild = p->rchild;
+            y->rchild->parent = y;
+        }
+        transPlant(root, p, y); // case 4: the node p has two child but and it's succesor isn't next to itself
+        y->lchild = p->lchild;
+        y->lchild->parent = y;
+    }
+}
+
+

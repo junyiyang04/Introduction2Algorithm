@@ -3,6 +3,7 @@
 
 // ******************************************************************
 // *                                                                *
+// *                     binary search tree                         *
 // *                     Inorder Tree Walk                          *
 // *                     Preorder Tree Walk                         *
 // *                     Postorder Tree Walk                        *
@@ -192,4 +193,12 @@ void treeDelete(BTree_Node* root, BTree_Node* p)
     }
 }
 
+// ******************************************************************
+// *                                                                *
+// *                     Red-Black trees                            *
+// *                     left rotate                                *
+// *                     right rotate                               *
+// *                                             *
+// *                                                                *
+// ******************************************************************
 

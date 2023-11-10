@@ -26,16 +26,20 @@ int main()
     // // chapter8
     // callCountingSort();
 
-    // chapter10
-    callLNode();
-    callDLNode();
+    // // chapter10
+    // callLNode();
+    // callDLNode();
 
-    int total = 10;
-    std::string name = "Cillian";
-    hash(name);
+    // int total = 10;
+    // std::string name = "Cillian";
+    // hash(name);
 
-    callEuclid();
-    callModularLinearEquationSolver();
-    callModularExponentiation();
+    // // chapter31
+    // callEuclid();
+    // callModularLinearEquationSolver();
+    // callModularExponentiation();
+
+    // chapter12
+    callBinarySearchTree();
     return 0;
 }

@@ -228,6 +228,11 @@ void callBinarySearchTree()
         p.data = i;
         treeInsert(&root, &p);
     }
+    for(int i = 0; i < insert_size; i++){
+        BTree_Node p;
+        p.data = 7 - i;
+        treeInsert(&root, &p);
+    }
     // in order
     Inorder(root);
 

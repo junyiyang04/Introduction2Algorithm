@@ -1,5 +1,4 @@
 #include <chapter12.h>
-// binary search tree
 
 // ******************************************************************
 // *                                                                *
@@ -156,7 +155,7 @@ BTree_Node* treePredecessor(BTree_Node* p)
 /// @param root IO- the root of the binary search tree(double * will allow the root to be inited as both NULL and others)
 /// @param p1 I- the node to insert
 /// @note the parameter 'p1' is not suitable, the only value need to pass through this position is the node's data
-void treeInsert(BTree_Node** root, BTree_Node* p1) //
+void treeInsert(BTree_Node** root, BTree_Node* p1)
 {
     BTree_Node* y = NULL;
     BTree_Node* x = *root; // x is uesd to search position to insert from root and transmit the value to y
@@ -166,16 +165,16 @@ void treeInsert(BTree_Node** root, BTree_Node* p1) //
         y = x;
         if(x->data < p->data)
             x = x->rchild;
-        else
+        else // 插入值小于等于
             x = x->lchild;
     }
     p->parent = y;
     if(y == NULL)
         *root = p;
-    else if(p->data < y->data)
-        y->lchild = p;
-    else
+    else if(p->data > y->data)
         y->rchild = p;
+    else
+        y->lchild = p;
 }
 
 /// @brief move subtrees around within the binary search tree(to my understanding, replacing u's place in the tree with v)
@@ -208,7 +207,7 @@ void treeDelete(BTree_Node* root, BTree_Node* p)
     else{
         BTree_Node* y = treeMinimum(p->rchild);
         if(y->parent != p){ // case 3: the node p has two child but and it's succesor is next to itself 
-            transPlant(root, y, y->rchild); // 这个操作将y节点空闲出来并且链接y->r到原来y的位置
+            transPlant(root, y, y->rchild); 
             y->rchild = p->rchild;
             y->rchild->parent = y;
         }
@@ -230,7 +229,7 @@ void callBinarySearchTree()
     }
     for(int i = 0; i < insert_size; i++){
         BTree_Node p;
-        p.data = 7 - i;
+        p.data = 9 - i;
         treeInsert(&root, &p);
     }
     // in order
@@ -245,19 +244,26 @@ void callBinarySearchTree()
     if(maxnode) printf("max: %d\n", maxnode->data);
 
     // search
-    BTree_Node* node = iterativeTreeSearch(root, 3);
-    printf("pointer : %p\n", node);
-    if(node) printf("nodedata: %d\n", node->data);
+    BTree_Node* node = iterativeTreeSearch(root, 4);
+    printf("pointer: %p\n", node);
+    if(node != NULL){
+        printf("nodedata: %d\n", node->data);
+        printf("nodedata next: %d\n", node->rchild->data);
 
-    // successor
-    BTree_Node* successor = treeSuccessor(node);
-    if(successor) printf("successor: %d\n", successor->data);
+        // // successor
+        // printf("> successor: ");
+        // BTree_Node* successor = treeSuccessor(node);
+        // if(successor) printf("%d\n", successor->data);
 
-    // predecessor
-    BTree_Node* predecessor = treePredecessor(node);
-    if(predecessor) printf("predecessor: %d\n", predecessor->data);
+        // predecessor
+        printf("> predecessor: ");
+        BTree_Node* predecessor = treePredecessor(node);
+        if(predecessor) printf("%d\n", predecessor->data);
 
-    // delete node
-    treeDelete(root, node);
+        // delete node
+        treeDelete(root, node);
+
+    }
+
     Inorder(root);
 }

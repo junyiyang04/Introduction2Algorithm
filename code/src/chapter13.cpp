@@ -90,29 +90,31 @@ void rbInsertFixUp(RBTree_Node* root, RBTree_Node* z)
     root->color = RBT_Color::RED; // the final check
 }
 
-void RBTreeInsert(RBTree_Node* root, RBTree_Node* z)
+void RBTreeInsert(RBTree_Node** root, RBTree_Node* z1)
 {
     RBTree_Node* y = NULL; // y will be set as the smallest data that bigger than z.data
-    RBTree_Node* x = root;
+    RBTree_Node* x = *root;
+    RBTree_Node* z = (RBTree_Node*)malloc(sizeof(RBTree_Node));
+    z->data = z1->data;
     while(x != NULL){
         y = x;
-        if(z->data < x->data)
-            x = x->lchild;
-        else
+        if(x->data < z->data)
             x = x->rchild;
+        else
+            x = x->lchild;
     }
     z->parent = y;
     if( NULL == y)
-        root = z;
-    else if(z->data < y->data)
-        y->lchild = z;
-    else
+        *root = z;
+    else if(z->data > y->data)
         y->rchild = z;
+    else
+        y->lchild = z;
     z->lchild = NULL;
     z->rchild = NULL;
     z->color = RBT_Color::RED;
     // using the rbInsertFixUp to re-color nodes
-    rbInsertFixUp(root, z);
+    //rbInsertFixUp(*root, z);
 }
 
 void callRedBlackTree()
@@ -123,7 +125,7 @@ void callRedBlackTree()
     for(int i = 0; i < insert_size; i++){
         RBTree_Node p;
         p.data = i;
-        RBTreeInsert(root, &p);
+        RBTreeInsert(&root, &p);
     }
-    // Inorder((BTree_Node*)root);
+    Inorder((BTree_Node*)root);
 }

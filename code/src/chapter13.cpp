@@ -95,7 +95,8 @@ void RBTreeInsert(RBTree_Node** root, RBTree_Node* z1)
     RBTree_Node* y = NULL; // y will be set as the smallest data that bigger than z.data
     RBTree_Node* x = *root;
     RBTree_Node* z = (RBTree_Node*)malloc(sizeof(RBTree_Node));
-    z->data = z1->data;
+    if(z != NULL) // prevent dereference NULL
+        z->data = z1->data;
     while(x != NULL){
         y = x;
         if(x->data < z->data)
@@ -103,7 +104,8 @@ void RBTreeInsert(RBTree_Node** root, RBTree_Node* z1)
         else
             x = x->lchild;
     }
-    z->parent = y;
+    if (z != NULL) // prevent dereference NULL
+        z->parent = y;
     if( NULL == y)
         *root = z;
     else if(z->data > y->data)

@@ -1,7 +1,9 @@
 #include <iostream>
 #include "export_macro.h"
 
-enum RBT_Color{
+
+// using enum class to address some limitations of enum
+enum class RBT_Color{
     RED = 0,
     BLACK
 };
@@ -15,4 +17,4 @@ typedef struct _RBTree_Node_
 
 
 
-void callRedBlackTree();
+I2A_API void callRedBlackTree();

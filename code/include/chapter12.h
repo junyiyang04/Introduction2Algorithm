@@ -41,6 +41,8 @@ I2A_API void Postorder(BTree_Node* p);
 /// @param key I- the value of the target node
 /// @return pointer to the node with data 'key'
 I2A_API BTree_Node* iterativeTreeSearch(BTree_Node* root, int key);
+
+
 I2A_API BTree_Node* treeSearch(BTree_Node* p, int key);
 
 /// @brief calculate the pointer to the mimimum node 
@@ -71,7 +73,21 @@ I2A_API BTree_Node* treePredecessor(BTree_Node* p);
 /// @note the parameter 'p1' is not suitable, the only value need to pass through this position is the node's data
 I2A_API void treeInsert(BTree_Node** root, BTree_Node* p1);
 
-/// @brief move subtrees around within the binary search tree(to my understanding, replacing u's place in the tree with v)
+/**
+ *     1. the left situation(right situation is the same with the left)
+ *
+ *        parent                parent
+ *       /        --------->   /
+ *      u  (v)                v  free(u)
+ *  
+ *     2. the location that a node's parent transplant to is null
+ *    
+ *        parant(NULL)
+ *       /        ---------> root = v
+ *      u 
+ */
+/// @brief move subtrees around within the binary search tree(to my understanding, replacing u's place in the tree with v
+///        , includes only the (v & u->parent) connection)
 /// @param root the root on behalf of the binary search tree
 /// @param u the position where want to move the subtree
 /// @param v subtree root
@@ -83,5 +99,26 @@ I2A_API void transPlant(BTree_Node* root, BTree_Node* u,BTree_Node* v);
 /// @param p the node waiting to be deleted
 I2A_API void treeDelete(BTree_Node* root, BTree_Node* p);
 
-
+/**
+ * tree structure
+ *   0
+ *    \
+ *     1
+ *      \
+ *       2
+ *        \
+ *         3
+ *          \
+ *           4
+ *          / \
+ *         4   5
+ *            / \
+ *           5   9
+ *              /
+ *             8
+ *            /
+ *           7
+ *          / \
+ *         6   8
+ */
 I2A_API void callBinarySearchTree();

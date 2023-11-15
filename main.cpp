@@ -39,7 +39,10 @@ int main()
     // callModularLinearEquationSolver();
     // callModularExponentiation();
 
-    // chapter12
-    callBinarySearchTree();
+    // // chapter12
+    // callBinarySearchTree();
+
+    // chapter13
+    callRedBlackTree();
     return 0;
 }

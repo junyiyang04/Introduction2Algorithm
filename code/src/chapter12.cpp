@@ -38,7 +38,7 @@ void Inorder(BTree_Node* p)
 {
     if(p != NULL){
         Inorder(p->lchild);
-        printf("%3d\n", p->data);
+        printf("%3d, %p\n", p->data, p);
         Inorder(p->rchild);
     }
 }
@@ -141,7 +141,7 @@ BTree_Node* treeSuccessor(BTree_Node* p)
 BTree_Node* treePredecessor(BTree_Node* p)
 {
     if(p->lchild != NULL) //这样直接使用会不会出问题
-        return p->rchild;
+        return p->lchild;
     BTree_Node** p_cp = &p;
     while((*p_cp)->parent != NULL && (*p_cp) == (*p_cp)->parent->lchild){
         (*p_cp) = (*p_cp)->parent; // while the node has no left child, the predecessor will be found upwards the tree
@@ -177,7 +177,21 @@ void treeInsert(BTree_Node** root, BTree_Node* p1)
         y->lchild = p;
 }
 
-/// @brief move subtrees around within the binary search tree(to my understanding, replacing u's place in the tree with v)
+/**
+ *     1. the left situation(right situation is the same with the left)
+ *
+ *        parent                parent
+ *       /        --------->   /
+ *      u  (v)                v  free(u)
+ *  
+ *     2. the location that a node's parent transplant to is null
+ *    
+ *        parant(NULL)
+ *       /        ---------> root = v
+ *      u 
+ */
+/// @brief move subtrees around within the binary search tree(to my understanding, replacing u's place in the tree with v
+///        , includes only the (v & u->parent) connection)
 /// @param root the root on behalf of the binary search tree
 /// @param u the position where want to move the subtree
 /// @param v subtree root
@@ -191,8 +205,8 @@ void transPlant(BTree_Node* root, BTree_Node* u,BTree_Node* v)
     else // u in the right branch
         u->parent->rchild = v;
     if(v != NULL)
-        v->parent = u->parent; // 不用首先判断v->parent是否为空吗
-    free(u); // free the useless node
+        v->parent = u->parent;
+    //free(u); // free the useless node(this early release cause an error in function treeDelete's case3 and case4)
 }
 
 /// @brief delete the node p
@@ -205,18 +219,45 @@ void treeDelete(BTree_Node* root, BTree_Node* p)
     else if(p->rchild == NULL)
         transPlant(root, p, p->lchild);
     else{
-        BTree_Node* y = treeMinimum(p->rchild);
-        if(y->parent != p){ // case 3: the node p has two child but and it's succesor is next to itself 
-            transPlant(root, y, y->rchild); 
-            y->rchild = p->rchild;
+        BTree_Node* y = treeMinimum(p->rchild); // y has no left child
+        if(y->parent != p){ // case 3: the node p has two child but and it's succesor is not next to itself 
+            transPlant(root, y, y->rchild); // this will make y link to none node(isolate y)
+            y->rchild = p->rchild; // re-link right child 
             y->rchild->parent = y;
         }
-        transPlant(root, p, y); // case 4: the node p has two child but and it's succesor isn't next to itself
-        y->lchild = p->lchild;
+        // connect the y node with p's left(mutual)
+        transPlant(root, p, y); // case 4: the node p has two child but and it's succesor is next to itself
+        y->lchild = p->lchild; // re-link left child
         y->lchild->parent = y;
     }
+    free(p); // too early release in transplant cause an error
 }
 
+
+
+
+/**
+ * tree structure
+ *   0
+ *    \
+ *     1
+ *      \
+ *       2
+ *        \
+ *         3
+ *          \
+ *           4
+ *          / \
+ *         4   5
+ *            / \
+ *           5   9
+ *              /
+ *             8
+ *            /
+ *           7
+ *          / \
+ *         6   8
+ */
 void callBinarySearchTree()
 {
     std::cout << "> Running test for chapter 12" << std::endl;
@@ -232,6 +273,9 @@ void callBinarySearchTree()
         p.data = 9 - i;
         treeInsert(&root, &p);
     }
+    BTree_Node p;
+    p.data = 8;
+    treeInsert(&root, &p);
     // in order
     Inorder(root);
 
@@ -244,21 +288,20 @@ void callBinarySearchTree()
     if(maxnode) printf("max: %d\n", maxnode->data);
 
     // search
-    BTree_Node* node = iterativeTreeSearch(root, 4);
+    BTree_Node* node = iterativeTreeSearch(root, 5);
     printf("pointer: %p\n", node);
     if(node != NULL){
         printf("nodedata: %d\n", node->data);
-        printf("nodedata next: %d\n", node->rchild->data);
 
-        // // successor
-        // printf("> successor: ");
-        // BTree_Node* successor = treeSuccessor(node);
-        // if(successor) printf("%d\n", successor->data);
+        // successor
+        printf("> successor: ");
+        BTree_Node* successor = treeSuccessor(node);
+        if(successor) printf("%d, %p\n", successor->data, successor);
 
         // predecessor
         printf("> predecessor: ");
         BTree_Node* predecessor = treePredecessor(node);
-        if(predecessor) printf("%d\n", predecessor->data);
+        if(predecessor) printf("%d, %p\n", predecessor->data, predecessor);
 
         // delete node
         treeDelete(root, node);

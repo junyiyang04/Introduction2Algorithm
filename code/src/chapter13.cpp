@@ -1,5 +1,5 @@
 #include <chapter13.h>
-
+#include <chapter12.h>
 
 
 // ******************************************************************
@@ -10,6 +10,8 @@
 // *                    - rb insert-fix-up(for color)               *
 // *                    - rb insert                                 *
 // *                    - rb delete                                 *
+// *                                                                *
+// *                                                                *
 // ******************************************************************
 
 
@@ -113,3 +115,15 @@ void RBTreeInsert(RBTree_Node* root, RBTree_Node* z)
     rbInsertFixUp(root, z);
 }
 
+void callRedBlackTree()
+{
+    printf("> Running test for chapter 13\n");
+    int insert_size = 6;
+    RBTree_Node* root = NULL;
+    for(int i = 0; i < insert_size; i++){
+        RBTree_Node p;
+        p.data = i;
+        RBTreeInsert(root, &p);
+    }
+    // Inorder((BTree_Node*)root);
+}

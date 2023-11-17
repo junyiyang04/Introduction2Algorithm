@@ -1,3 +1,5 @@
+# 1. 
+
 Sure, here's an example of how traditional `enum` can lead to name clashes:
 
 ```cpp
@@ -21,3 +23,16 @@ enum class TrafficLight { Red, Yellow, Green };
 ```
 
 Now, there's no issue because `Color::Red` and `TrafficLight::Red` are considered distinct and there's no name clash. This is one of the advantages of using `enum class` over traditional `enum`.
+
+# 2. 
+
+check if the pointer is NULL before dereferencing it
+
+```c++
+if(ptr != NULL){ // new feature in c++ 11
+	ptr = destiny_ptr;
+}
+```
+
+
+

@@ -21,5 +21,5 @@
 2023-11-14 17:16:51 -> log: call of cp12
 2023-11-15 18:20:50 -> log: finish chapter12
 2023-11-15 18:38:41 -> log: chapter13 start
-2023-11-15 23:52:55 -> log: none
 2023-11-15 23:57:59 -> log: none
+2023-11-17 22:11:01 -> log: red black tree insert

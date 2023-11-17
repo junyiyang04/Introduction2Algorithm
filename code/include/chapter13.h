@@ -15,6 +15,4 @@ typedef struct _RBTree_Node_
 }RBTree_Node;
 
 
-
-
 I2A_API void callRedBlackTree();

@@ -263,6 +263,7 @@ void callBinarySearchTree()
     std::cout << "> Running test for chapter 12" << std::endl;
     int insert_size = 6;
     BTree_Node* root = NULL;
+
     for(int i = 0; i < insert_size; i++){
         BTree_Node p;
         p.data = i;

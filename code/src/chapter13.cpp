@@ -94,20 +94,20 @@ void rbInsertFixUp(RBTree_Node* root, RBTree_Node* z)
 {
     printf("> entered fix up: %p\n", z);
     // parent is red will violate the priperties of red black tree
-    while(z->parent->color == RBT_Color::RED){
+    while(z->parent->color == RBT_Color::RED){ // z will always be a red node
         printf("> entered violation solver\n");
         // LEFT: when parent is a left child
-        if(z->parent == z->parent->parent->lchild){ 
+        if(z->parent == z->parent->parent->lchild){
             printf("> entered left\n");
 
             RBTree_Node* y = z->parent->parent->rchild; // uncle
-            // case1: 
+            // case1:
             // indicator node z is the target to change, after adjustment indicator node z will go up to z1
             //     node                   node
             //     |                      |
-            //     b                      r(z1)
+            //     b                    r(z1)
             //    / \       re-color     / \
-            //   r   r(y)  --------->   b   b       color changed in location
+            //   r   r(y)  --------->   b   b       node's color changed in location
             //  /                      /
             // r(z)                   r(z)
             if(y->color == RBT_Color::RED){ 
@@ -149,6 +149,12 @@ void rbInsertFixUp(RBTree_Node* root, RBTree_Node* z)
                 z->parent->color = RBT_Color::BLACK;
                 z->parent->parent->color = RBT_Color::RED;
                 rightRotate(root, z->parent->parent);            
+            }
+            else{
+                printf("> data: %d, color: %d\n", z->data, z->color);
+                z->parent->color = RBT_Color::BLACK;
+                z->parent->parent->color = RBT_Color::RED;
+                rightRotate(root, z->parent->parent);   
             }
         }
         // RIGHT: when parent is a right child
@@ -205,7 +211,14 @@ void RBTreeInsert(RBTree_Node** root, RBTree_Node* z1)
     z->lchild = &Nil; // check if this measure takes effect
     z->rchild = &Nil;
     z->color = RBT_Color::RED;
-
+    RBTree_Node* iter = z;
+    printf("\n");
+    printf("> pointer: %p, data: %d", z, z->data);
+    while(iter->parent != &Nil){
+        iter = iter->parent;
+        printf(" ---> parent\n> pointer: %p, data: %d", iter, iter->data);
+    }
+    printf("\n\n");
     // using the rbInsertFixUp to re-color nodes
     rbInsertFixUp(*root, z);
 }
@@ -213,7 +226,7 @@ void RBTreeInsert(RBTree_Node** root, RBTree_Node* z1)
 void callRedBlackTree()
 {
     printf("> Running test for chapter 13\n");
-    int insert_size = 2;
+    int insert_size = 3;
     RBTree_Node* root = NULL;
     for(int i = 0; i < insert_size; i++){
         RBTree_Node p;
@@ -222,4 +235,5 @@ void callRedBlackTree()
     }
 
     RBTreeInorder(root);
+    printf("> Finish running test for chapter 13\n");
 }

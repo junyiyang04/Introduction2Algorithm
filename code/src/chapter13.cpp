@@ -40,6 +40,25 @@ void RBTreeInorder(RBTree_Node* p)
     }
 }
 
+void RBTreeHeightCheck(RBTree_Node* p)
+{
+    if(p != &Nil){
+        RBTreeHeightCheck(p->lchild);
+        if(p->lchild == &Nil || p->rchild == &Nil){
+            int height = 0;
+            RBTree_Node* iter = p;
+            while(iter->parent != &Nil){
+                if(iter->color == RBT_Color::BLACK){
+                    height++;
+                }
+                iter = iter->parent;
+            }
+            printf("> The height of this leaf is: %d\n", height);;
+        }
+        RBTreeHeightCheck(p->rchild);
+    }
+}
+
 /**
  *  旋转操作的方向就是将树靠内部（中间）的子树移动的方向
  *      |                        |
@@ -49,25 +68,27 @@ void RBTreeInorder(RBTree_Node* p)
  *       / \   right rotate   / \
  *      β   γ                α   β
  */
-void rightRotate(RBTree_Node* root, RBTree_Node* y)
+void rightRotate(RBTree_Node** root, RBTree_Node* y)
 {
-    RBTree_Node* x;
-    x = y->lchild;
+    RBTree_Node* x = y->lchild;
     y->lchild = x->rchild;
     if( x->rchild != &Nil) // 这里要不要改成sentinel T.nil
         x->rchild->parent = y;
     x->parent = y->parent;
     if( y->parent == &Nil)
-        root = x;
+        *root = x;
     else if(y == y->parent->rchild)
         y->parent->rchild = x;
     else
         y->parent->lchild = x;
     x->rchild = y;
     y->parent = x;
+    // printf("> root node: %p\n", root);
+    // printf("> l node: %p\n", (*root)->lchild);
+    // printf("> r node: %p\n", (*root)->rchild);
 }
 
-void leftRotate(RBTree_Node* root, RBTree_Node* x)
+void leftRotate(RBTree_Node** root, RBTree_Node* x)
 {
     RBTree_Node* y;
     y = x->rchild;
@@ -76,7 +97,7 @@ void leftRotate(RBTree_Node* root, RBTree_Node* x)
         y->lchild->parent = x;
     y->parent = x->parent;
     if( x->parent == &Nil)
-        root = y;
+        *root = y;
     else if(x == x->parent->lchild)
         x->parent->lchild = y;
     else
@@ -90,16 +111,12 @@ void leftRotate(RBTree_Node* root, RBTree_Node* x)
 /// @param root I- the root of the red black tree
 /// @param z I- the new inserted node
 /// @note through case 2, going up perhaps means indicator node goes to a smaller node
-void rbInsertFixUp(RBTree_Node* root, RBTree_Node* z)
+void rbInsertFixUp(RBTree_Node** root, RBTree_Node* z)
 {
-    printf("> entered fix up: %p\n", z);
     // parent is red will violate the priperties of red black tree
     while(z->parent->color == RBT_Color::RED){ // z will always be a red node
-        printf("> entered violation solver\n");
         // LEFT: when parent is a left child
         if(z->parent == z->parent->parent->lchild){
-            printf("> entered left\n");
-
             RBTree_Node* y = z->parent->parent->rchild; // uncle
             // case1:
             // indicator node z is the target to change, after adjustment indicator node z will go up to z1
@@ -151,10 +168,9 @@ void rbInsertFixUp(RBTree_Node* root, RBTree_Node* z)
                 rightRotate(root, z->parent->parent);            
             }
             else{
-                printf("> data: %d, color: %d\n", z->data, z->color);
                 z->parent->color = RBT_Color::BLACK;
                 z->parent->parent->color = RBT_Color::RED;
-                rightRotate(root, z->parent->parent);   
+                rightRotate(root, z->parent->parent);    // there is perhaps an error
             }
         }
         // RIGHT: when parent is a right child
@@ -176,9 +192,15 @@ void rbInsertFixUp(RBTree_Node* root, RBTree_Node* z)
                 z->parent->parent->color = RBT_Color::RED;
                 leftRotate(root, z->parent->parent);            
             }
+            else{
+                // case3:
+                z->parent->color = RBT_Color::BLACK;
+                z->parent->parent->color = RBT_Color::RED;
+                leftRotate(root, z->parent->parent);  
+            }
         }
     }
-    root->color = RBT_Color::BLACK; // the final check
+    (*root)->color = RBT_Color::BLACK; // the final check
 }
 
 /// @brief 
@@ -212,28 +234,37 @@ void RBTreeInsert(RBTree_Node** root, RBTree_Node* z1)
     z->rchild = &Nil;
     z->color = RBT_Color::RED;
     RBTree_Node* iter = z;
-    printf("\n");
-    printf("> pointer: %p, data: %d", z, z->data);
-    while(iter->parent != &Nil){
-        iter = iter->parent;
-        printf(" ---> parent\n> pointer: %p, data: %d", iter, iter->data);
-    }
-    printf("\n\n");
+    // printf("\n");
+    // printf("> pointer: %p, data: %d, color: %d", z, z->data, z->color);
+    // while(iter->parent != &Nil){
+    //     iter = iter->parent;
+    //     printf(" ---> parent\n> pointer: %p, data: %d, color: %d", iter, iter->data, iter->color);
+    // }
+    // printf("\n\n");
     // using the rbInsertFixUp to re-color nodes
-    rbInsertFixUp(*root, z);
+    rbInsertFixUp(root, z);
 }
 
 void callRedBlackTree()
 {
     printf("> Running test for chapter 13\n");
-    int insert_size = 3;
+    int insert_size = 30;
     RBTree_Node* root = NULL;
     for(int i = 0; i < insert_size; i++){
         RBTree_Node p;
-        p.data = insert_size - i;
+        // p.data = insert_size - i;
+        p.data = i;
         RBTreeInsert(&root, &p);
     }
-
+    // insert a red black tree
     RBTreeInorder(root);
+
+    // black height check
+    RBTreeHeightCheck(root);
+
+    // red black tree delete
+    
+
+
     printf("> Finish running test for chapter 13\n");
 }

@@ -36,3 +36,9 @@ if(ptr != NULL){ // new feature in c++ 11
 
 
 
+# 3.
+
+when you want to change a pointer ,using pointer to point at the pointer: 
+```c++
+Type** pointer;
+```

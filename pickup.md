@@ -42,3 +42,6 @@ when you want to change a pointer ,using pointer to point at the pointer:
 ```c++
 Type** pointer;
 ```
+
+# 4.
+有些输入是NULL的情况是不能用的，非NULL的输入应该是用户保证的

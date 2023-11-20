@@ -14,12 +14,31 @@
 // *                                                                *
 // ******************************************************************
 
+
+
+
 // the leaf node
 RBTree_Node Nil{0, NULL, NULL, NULL, RBT_Color::BLACK};
 
+/// @brief calculate pointer to the node with data 'key'
+/// @param root I- the root of the binary search tree
+/// @param key I- the value of the target node
+/// @return pointer to the node with data 'key'
+RBTree_Node* iterativeRBTreeSearch(RBTree_Node* root, int key)
+{
+    RBTree_Node** p = &root;
+    while(*p != NULL && *p != &Nil && key != (*p)->data){
+        if(key < (*p)->data)
+            *p = (*p)->lchild;
+        else
+            *p = (*p)->rchild;
+    }
+    return *p;
+}
+
 void RBTreeInorder(RBTree_Node* p)
 {
-    if(p != &Nil){
+    if(p != &Nil && p != NULL){
         RBTreeInorder(p->lchild);
         if(p->parent != &Nil){
             if(p->parent->lchild == p){
@@ -38,11 +57,14 @@ void RBTreeInorder(RBTree_Node* p)
         printf("%5d, %5d, %18p\n", p->data, p->color, p); // %16p 14 + 2
         RBTreeInorder(p->rchild);
     }
+    else if(p == NULL) printf(">>>RED_BLACK_TREE_WARNING: empty red black tree\n");
 }
 
+/// @brief 
+/// @param p 
 void RBTreeHeightCheck(RBTree_Node* p)
 {
-    if(p != &Nil){
+    if(p != &Nil && p != NULL){
         RBTreeHeightCheck(p->lchild);
         if(p->lchild == &Nil || p->rchild == &Nil){
             int height = 0;
@@ -57,6 +79,7 @@ void RBTreeHeightCheck(RBTree_Node* p)
         }
         RBTreeHeightCheck(p->rchild);
     }
+    else if(p == NULL) printf(">>>RED_BLACK_TREE_WARNING: empty red black tree\n");
 }
 
 /**
@@ -72,7 +95,7 @@ void rightRotate(RBTree_Node** root, RBTree_Node* y)
 {
     RBTree_Node* x = y->lchild;
     y->lchild = x->rchild;
-    if( x->rchild != &Nil) // 这里要不要改成sentinel T.nil
+    if( x->rchild != &Nil)
         x->rchild->parent = y;
     x->parent = y->parent;
     if( y->parent == &Nil)
@@ -83,9 +106,6 @@ void rightRotate(RBTree_Node** root, RBTree_Node* y)
         y->parent->lchild = x;
     x->rchild = y;
     y->parent = x;
-    // printf("> root node: %p\n", root);
-    // printf("> l node: %p\n", (*root)->lchild);
-    // printf("> r node: %p\n", (*root)->rchild);
 }
 
 void leftRotate(RBTree_Node** root, RBTree_Node* x)
@@ -93,7 +113,7 @@ void leftRotate(RBTree_Node** root, RBTree_Node* x)
     RBTree_Node* y;
     y = x->rchild;
     x->rchild = y->lchild;
-    if( y->lchild != &Nil) // 这里要不要改成sentinel T.nil
+    if( y->lchild != &Nil)
         y->lchild->parent = x;
     y->parent = x->parent;
     if( x->parent == &Nil)
@@ -128,15 +148,12 @@ void rbInsertFixUp(RBTree_Node** root, RBTree_Node* z)
             //  /                      /
             // r(z)                   r(z)
             if(y->color == RBT_Color::RED){ 
-                printf("> entered case1\n");
-
                 z->parent->color = RBT_Color::BLACK;
                 y->color = RBT_Color::BLACK;
                 z->parent->parent->color = RBT_Color::RED;
                 z = z->parent->parent;
             }
             else if(z == z->parent->rchild){
-                printf("> entered case2\n");
                 // case2: this option will transform case2 into case3 without solving any violation
                 // * uncle y is black and z is the right child, indicator node z will go up to z1
                 // * through this case, going up perhaps means indicator node goes to a smaller node
@@ -203,7 +220,7 @@ void rbInsertFixUp(RBTree_Node** root, RBTree_Node* z)
     (*root)->color = RBT_Color::BLACK; // the final check
 }
 
-/// @brief 
+/// @brief  insert a node into red black tree
 /// @param root I- the root node which should be init as pointer NULL or pointer of other node 
 /// @param z1 I- only the color and the data is important
 void RBTreeInsert(RBTree_Node** root, RBTree_Node* z1)
@@ -245,10 +262,85 @@ void RBTreeInsert(RBTree_Node** root, RBTree_Node* z1)
     rbInsertFixUp(root, z);
 }
 
+
+/// @brief calculate the pointer to the mimimum node 
+/// @param root I- the root of red black tree
+/// @return pointer to the minimum node
+RBTree_Node* RBTreeMinimum(RBTree_Node* root)
+{
+    RBTree_Node** p = &root;
+    if(*p != &Nil && *p != NULL)
+        while((*p)->lchild != &Nil)
+            (*p) = (*p)->lchild;        
+    return *p;
+}
+
+/// @brief remove the node u and connect v with u's parent mutually(regardless the child u)
+/// @param root IO- the root of the red black tree
+/// @param u I- the node waiting to be deleted
+/// @param v I- the node waiting to be connected
+void RBTransplant(RBTree_Node** root, RBTree_Node* u, RBTree_Node* v)
+{
+    if(u->parent == &Nil)
+        *root = v;
+    else if(u->parent->lchild = u)
+        u->parent->lchild = v;
+    else
+        u->parent->rchild = v;
+    // if(v != &Nil) // 应该是要加这一句的，毕竟Nil has no parent, but Nil can not be achieved outside, so useless
+        v->parent =u->parent;
+}
+
+
+void RBTreeDeleteFixup(RBTree_Node** root, RBTree_Node* x)
+{
+
+}
+
+
+void RBTreeDelete(RBTree_Node** root, RBTree_Node* z)
+{
+    RBTree_Node* y = z;
+    RBT_Color y_original_color = y->color;
+    RBTree_Node* x;
+    if(z->lchild == &Nil){
+        printf("> left nil\n");
+        x = z->rchild;
+        RBTransplant(root, z, z->rchild);
+    }
+    else if(z->rchild == &Nil){
+        printf("> right nil\n");
+        x = z->lchild;
+        RBTransplant(root, z, z->lchild);
+    }
+    else{
+        printf("> no nil\n");
+        y = RBTreeMinimum(z->rchild);
+        y_original_color = y->color;
+        x = y->rchild;
+        if(y->parent == z){
+            x->parent = y; // 测试是否必要
+        }
+        else{
+            RBTransplant(root, y, y->rchild);
+            y->rchild = z->rchild;
+            y->rchild->parent = y;
+        }
+        RBTransplant(root, z, y);
+        y->lchild = z->lchild;
+        y->lchild->parent = y;
+        y->color = z->color;
+    }
+    printf("> starting the color fix up\n");
+    if(y_original_color == RBT_Color::BLACK){
+        RBTreeDeleteFixup(root, x);
+    }
+}
+
 void callRedBlackTree()
 {
     printf("> Running test for chapter 13\n");
-    int insert_size = 30;
+    int insert_size = 9;
     RBTree_Node* root = NULL;
     for(int i = 0; i < insert_size; i++){
         RBTree_Node p;
@@ -262,9 +354,22 @@ void callRedBlackTree()
     // black height check
     RBTreeHeightCheck(root);
 
-    // red black tree delete
-    
-
-
+    // tree minimum
+    RBTree_Node* min = RBTreeMinimum(root);
+    if(min != NULL){
+        printf("> min data-%d, color-%d, pointer-%p\n", min->data, min->color, min);
+    }
+    else{
+        printf("> Can't find minimum node in the red black tree\n"); // %16p 14 + 2
+    }
+    RBTree_Node* node = iterativeRBTreeSearch(root, 5);
+    if(node != NULL){
+        printf("\n> node data-%d, color-%d, pointer-%p\n", node->data, node->color, node);
+        // red black tree delete
+        RBTreeDelete(&root, node);    
+        RBTreeInorder(root);
+    }
+    else
+        printf("> Can't find this node in the red black tree\n"); // %16p 14 + 2
     printf("> Finish running test for chapter 13\n");
 }

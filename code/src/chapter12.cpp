@@ -196,7 +196,7 @@ void treeInsert(BTree_Node** root, BTree_Node* p1)
 /// @param u the position where want to move the subtree
 /// @param v subtree root
 /// @note this operation don't change the location of u v
-void transPlant(BTree_Node* root, BTree_Node* u,BTree_Node* v)
+void transPlant(BTree_Node* root, BTree_Node* u,BTree_Node* v) // 这里的参数root会有问题， 应该是使用**root
 {
     if(u->parent == NULL)
         root = v;

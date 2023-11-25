@@ -26,13 +26,15 @@ RBTree_Node Nil{0, NULL, NULL, NULL, RBT_Color::BLACK};
 /// @return pointer to the node with data 'key'
 RBTree_Node* iterativeRBTreeSearch(RBTree_Node* root, int key)
 {
-    RBTree_Node** p = &root;
+    RBTree_Node** p;
+    *p = root;
     while(*p != NULL && *p != &Nil && key != (*p)->data){
         if(key < (*p)->data)
             *p = (*p)->lchild;
         else
             *p = (*p)->rchild;
     }
+    if(*p == &Nil) *p = NULL;
     return *p;
 }
 
@@ -281,6 +283,7 @@ RBTree_Node* RBTreeMinimum(RBTree_Node* root)
 /// @param v I- the node waiting to be connected
 void RBTransplant(RBTree_Node** root, RBTree_Node* u, RBTree_Node* v)
 {
+    printf(">> The pointer to u  : %p\n", u);
     if(u->parent == &Nil)
         *root = v;
     else if(u->parent->lchild = u)
@@ -289,12 +292,56 @@ void RBTransplant(RBTree_Node** root, RBTree_Node* u, RBTree_Node* v)
         u->parent->rchild = v;
     // if(v != &Nil) // 应该是要加这一句的，毕竟Nil has no parent, but Nil can not be achieved outside, so useless
         v->parent =u->parent;
+    printf(">> The pointer to u  : %p\n", u);
+    printf(">> The pointer to v  : %p\n", v);
+    printf(">> The pointer to nil: %p\n", &Nil);
+
 }
 
 
 void RBTreeDeleteFixup(RBTree_Node** root, RBTree_Node* x)
 {
+    // x is a doubly dark point
+    while(x != *root && x->color == RBT_Color::BLACK){
+        // on the left child
+        if(x == x->parent->lchild){
+            RBTree_Node* w = x->parent->rchild;
+            // case1: 
+            if(w->color == RBT_Color::RED){
+                w->color = RBT_Color::BLACK;
+                x->parent->color = RBT_Color::RED;
+                leftRotate(root, x->parent); 
+                w = x->parent->rchild; // x's parent has been changed
 
+            }
+            // case2: this will change the color of the node x
+            if(w->lchild->color == RBT_Color::BLACK && w->rchild->color == RBT_Color::BLACK){
+                w->color = RBT_Color::RED;
+                x = x->parent;
+            }
+            // case3
+            else if(w->rchild->color == RBT_Color::BLACK){
+                w->lchild->color = RBT_Color::BLACK;
+                w->color = RBT_Color::RED;
+                rightRotate(root, w);
+                w = x->parent->rchild;
+                //case4
+                w->color = x->parent->color;
+                x->parent->color = RBT_Color::BLACK;
+                w->rchild->color = RBT_Color::BLACK;
+                leftRotate(root, x->parent);
+                x = *root;
+            }
+            else{
+
+            }
+        }
+        // on the right child
+        else{
+
+        }
+    }
+    x->color = RBT_Color::BLACK;
 }
 
 
@@ -331,9 +378,9 @@ void RBTreeDelete(RBTree_Node** root, RBTree_Node* z)
         y->lchild->parent = y;
         y->color = z->color;
     }
-    printf("> starting the color fix up\n");
+    printf("> starting the delete color fix up\n");
     if(y_original_color == RBT_Color::BLACK){
-        RBTreeDeleteFixup(root, x);
+        // RBTreeDeleteFixup(root, x);
     }
 }
 
@@ -362,12 +409,17 @@ void callRedBlackTree()
     else{
         printf("> Can't find minimum node in the red black tree\n"); // %16p 14 + 2
     }
-    RBTree_Node* node = iterativeRBTreeSearch(root, 5);
+    RBTree_Node* node = iterativeRBTreeSearch(root, 0);
     if(node != NULL){
         printf("\n> node data-%d, color-%d, pointer-%p\n", node->data, node->color, node);
         // red black tree delete
         RBTreeDelete(&root, node);    
         RBTreeInorder(root);
+        // RBTree_Node* node1 = iterativeRBTreeSearch(root, 0);
+        // if(node1 != NULL){
+        //     printf("\n>>>> node1 data-%d, color-%d, pointer-%p\n", node1->data, node1->color, node1);
+        // }
+        printf("> deleting the node: %d\n", node->data);
     }
     else
         printf("> Can't find this node in the red black tree\n"); // %16p 14 + 2

@@ -347,6 +347,7 @@ void RBTreeDeleteFixup(RBTree_Node** root, RBTree_Node* x)
 
 void RBTreeDelete(RBTree_Node** root, RBTree_Node* z)
 {
+    printf("-------------\n");
     RBTree_Node* y = z;
     RBT_Color y_original_color = y->color;
     RBTree_Node* x;

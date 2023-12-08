@@ -4,6 +4,8 @@
 #include "export_macro.h"
 #include <vector>
 
+const float MAXIMUM = std::numeric_limits<float>::infinity();
+
 template <typename T1, typename T2>
 struct Array
 {

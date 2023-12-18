@@ -111,7 +111,10 @@ int bottomUpCutRod(int *price_list, int price_list_len, int n)
     for(int j = 1; j <= n; j++){
         int q = 0x80000001;
         for(int i = 1; i <= j; i++){
-            int tmp_q = price_list[i - 1] + r[j - i];
+            int tmp_q = r[j - i];
+            if(i <= price_list_len){
+                tmp_q += price_list[i - 1];
+            }
             q = q > tmp_q ? q : tmp_q;
         }
         r[j] = q;
@@ -121,14 +124,61 @@ int bottomUpCutRod(int *price_list, int price_list_len, int n)
     return revenue;
 }
 
+/// @brief output the maximum revenue and an optimal decomposition of a rod of length n
+/// @param price_list 
+/// @param price_list_len 
+/// @param n 
+/// @param solution 
+/// @return 
+/// @note 
+int extendedBottomUpCutRod(int *price_list, int price_list_len, int n, int *solution)
+{
+    int* r = (int*)malloc(sizeof(int) * (n + 1));
+    r[0] = 0;
+    for(int j = 1; j <= n; j++){
+        int q = 0x80000001;
+        for(int i = 1; i <= j; i++){
+            int tmp_q = r[j - i];
+            if(i <= price_list_len){
+                tmp_q += price_list[i - 1];
+            }
+            if(q < tmp_q){
+                q = tmp_q;
+                solution[j] = i;                
+            }
+        }
+        r[j] = q;
+    }
+    int revenue = r[n];
+    free(r);
+    return revenue;
+}
+
+
+
 void callCutRod()
 {
     printf("> Running test for chapter 15\n");
     // when the lenght is bigger than 20, the speed difference is apparently to tell
-    int length = 20;
-    int revenue0 = cutRod(price, 10, length);
+    int length = 23;
+    // int revenue0 = cutRod(price, 10, length); // so slow
+    
     int revenue1 = memoizedCutRod(price, 10, length);
-    printf("> The maximum revenue of %d inches rod is %d\n", length, revenue0);
+
+    int revenue2 = bottomUpCutRod(price, 10, length);
+
+    int* slv = (int*)malloc(sizeof(int) * (length));
+    int revenue3 = extendedBottomUpCutRod(price, 10, length, slv);
+
+    // printf("> The maximum revenue of %d inches rod is %d\n", length, revenue0);
     printf("> The maximum revenue of %d inches rod is %d(using memoized method to remember steps that have been worked through)\n", length, revenue1);
+    printf("> The maximum revenue of %d inches rod is %d(bottom-up dynamic-programming approach)\n", length, revenue2);
+    printf("> The maximum revenue of %d inches rod is %d(bottom-up dynamic-programming approach with extend solution)\n", length, revenue3);
+    int cnt = 1;
+    while(length > 0){
+        printf("  The %dst segment is %d inches long with price %d\n", cnt++, slv[length], price[slv[length] - 1]);
+        length -= slv[length];
+    }
     printf("> Finish test for chapter 15\n");
+    free(slv);
 }

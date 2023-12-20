@@ -59,4 +59,9 @@ I2A_API void callCutRod();
 
 
 
+I2A_API void callMatrixChainOrder();
+
+
+
+
 #endif

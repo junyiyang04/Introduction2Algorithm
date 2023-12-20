@@ -154,8 +154,6 @@ int extendedBottomUpCutRod(int *price_list, int price_list_len, int n, int *solu
     return revenue;
 }
 
-
-
 void callCutRod()
 {
     printf("> Running test for chapter 15\n");
@@ -182,3 +180,40 @@ void callCutRod()
     printf("> Finish test for chapter 15\n");
     free(slv);
 }
+
+// matrix-chain multiplication dimensions
+static int dimensions[10] = {};
+
+void matrixChainOrder(int* dimension_list, int length)
+{
+    int matrix_n = length - 1; // the number of matrix
+    int* m = (int*)malloc(sizeof(int) * matrix_n * matrix_n);
+    int* s = (int*)malloc(sizeof(int) * (matrix_n - 1) * (matrix_n - 1));
+    for(int i = 1; i <= matrix_n; i++){
+        m[i * (matrix_n + 1)] = 0;
+    }
+    for(int l = 2; l <= matrix_n; l++){ // l is the chain length
+        for(int i = 1; i <= matrix_n - l + 1; i++){
+            int j = i + l -1;
+            m[(i - 1) * matrix_n + j - 1] = 0x7FFFFFFF;
+            int q;
+            for(int k = i; k <= j - 1; k++){
+                q = m[(i - 1) * matrix_n + (k - 1)] + m[k * matrix_n + (j - 1)] + p
+
+            }
+        }
+    }
+    free(m);
+    free(s);
+}
+
+void callMatrixChainOrder()
+{
+    printf("> Running test for chapter 15\n");
+
+    matrixChainOrder(dimensions, 10);
+
+
+    printf("> Finish test for chapter 15\n");
+}
+

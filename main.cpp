@@ -46,8 +46,8 @@ int main()
     // callRedBlackTree();
 
     // chapter15
-    callCutRod();
-
+    // callCutRod();
+    callMatrixChainOrder();
 
     return 0;
 }

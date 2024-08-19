@@ -181,25 +181,31 @@ void callCutRod()
     free(slv);
 }
 
-// matrix-chain multiplication dimensions
-static int dimensions[10] = {};
+// matrix-chain multiplication dimensions(n + 1), there is one more number to store n matrix dimensional information
+static int dimensions[7] = {30, 35, 15, 5, 10, 20, 25};
 
 void matrixChainOrder(int* dimension_list, int length)
 {
     int matrix_n = length - 1; // the number of matrix
     int* m = (int*)malloc(sizeof(int) * matrix_n * matrix_n);
     int* s = (int*)malloc(sizeof(int) * (matrix_n - 1) * (matrix_n - 1));
-    for(int i = 1; i <= matrix_n; i++){
+    for(int i = 0; i < matrix_n; i++){
+        m[i * (matrix_n + 1)] = 0;  // the time to get matrix A(ii) is 0 cuz it is already exists
+    }
+    for(int i = 0; i < matrix_n - 1; i++){
         m[i * (matrix_n + 1)] = 0;
     }
     for(int l = 2; l <= matrix_n; l++){ // l is the chain length
-        for(int i = 1; i <= matrix_n - l + 1; i++){
-            int j = i + l -1;
-            m[(i - 1) * matrix_n + j - 1] = 0x7FFFFFFF;
+        for(int i = 0; i <= matrix_n - l; i++){ //from 0 to n-1
+            int j = i + l -1; // j is always bigger than i
+            m[i * matrix_n + j] = 0x7FFFFFFF; // initial time of calculating A(ij) in which i≠j as infinite
             int q;
             for(int k = i; k <= j - 1; k++){
-                q = m[(i - 1) * matrix_n + (k - 1)] + m[k * matrix_n + (j - 1)] + p
-
+                q = m[i * matrix_n + k] + m[(k + 1) * matrix_n + j]
+                    + dimension_list[i] * dimension_list[k] * dimension_list[j + 1]; // get the min time of getting A(ij)
+                if(q < m[i * matrix_n + j]){
+                    m[i * matrix_n + j] = q;
+                }
             }
         }
     }
